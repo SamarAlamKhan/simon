@@ -61,7 +61,8 @@ let checkAnswer = (currentLevel) => {
 }
 
 let reset = () => {
-    level = 1;
+    level = 0;
     gamePattern = [];
     gameStart = false;
+
 }
