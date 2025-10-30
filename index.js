@@ -47,13 +47,13 @@ let nextSequence = () => {
 };
 
 let effect = (color) => {
-    $(`#${color}`).css("opacity", 0.5);
+    $(`#${color}`).css("opacity", 0.1);
     let sound = new Audio(`./sounds/${color}.mp3`);
     sound.play();
     
     setTimeout(() => {
         $(`#${color}`).css("opacity", 1);
-    }, 100);
+    }, 300);
 };
 
 $(".btn").click(function() {
@@ -100,3 +100,4 @@ let reset = () => {
     gamePattern = [];
     gameStart = false;
 }
+
