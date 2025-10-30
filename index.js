@@ -3,12 +3,38 @@ let userPattern = [];
 let level = 0;
 let gameStart = false;
 
+$(document).ready(() => {
+    const deviceMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (!deviceMobile) {
+        $("h1").html("Press Any Key To Start");
+    } else {
+        $("h1").html("Press 'START' To Play")
+    }
+})
+
+function condition() {
+    if (!deviceMobile) {
+        $("h1").html("Press Any Key To Start");
+    } else {
+        $("h1").html("Press 'START' To Play")
+    }
+}
+
 $(document).keydown(() => {
+    start();
+});
+
+$("button").click(() => {
+    start();
+});
+
+let start = () => {
     if (!gameStart) {
         nextSequence();
         gameStart = true;
     };
-});
+}
 
 let nextSequence = () => {
     userPattern = [];
@@ -52,7 +78,16 @@ let checkAnswer = (currentLevel) => {
         new Audio("./sounds/wrong.mp3").play();
         $("body").css("backgroundColor", "red");
         setTimeout(() => {
-            $("h1").html(`GAME OVER<br><br>Press Any Key To Start Again`);
+            $(document).ready(() => {
+                const deviceMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+                if (!deviceMobile) {
+                    $("h1").html("GAME OVER<br><br>Press Any Key To Play Again");
+                } else {
+                    $("h1").html("GAME OVER<br><br>Press 'START' To Play Again");
+                }
+            });
+
             $("body").css("backgroundColor", "#011F3F");
         }, 300);
     
@@ -64,5 +99,4 @@ let reset = () => {
     level = 0;
     gamePattern = [];
     gameStart = false;
-
 }
