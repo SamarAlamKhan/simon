@@ -17,7 +17,7 @@ function condition() {
     if (!deviceMobile) {
         $("h1").html("Press Any Key To Start");
     } else {
-        $("h1").html("Press 'START' To Play")
+        $("h1").html("Press 'START' To Play");
     }
 }
 
@@ -75,14 +75,15 @@ let checkAnswer = (currentLevel) => {
             }, 1000)
         }
     } else {
+        let score = level;
         new Audio("./sounds/wrong.mp3").play();
         $("body").css("backgroundColor", "red");
         setTimeout(() => {
 
                 if (!deviceMobile) {
-                    $("h1").html("GAME OVER<br><br>Press Any Key To Play Again");
+                    $("h1").html("GAME OVER<br><br>Press Any Key To Play Again<br><br>" + `Score: ${score}`);
                 } else {
-                    $("h1").html("GAME OVER<br><br>Press 'START' To Play Again");
+                    $("h1").html("GAME OVER<br><br>Press 'START' To Play Again<br><br>" + `Score: ${score}`);
                 }
 
             $("body").css("backgroundColor", "#011F3F");
